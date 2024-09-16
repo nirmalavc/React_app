@@ -23,7 +23,7 @@ class Header extends Component{
                 </div>
                 <nav className="nav">
                     <ul>
-                    {this.state.menus.map(menu =>(<li>{menu.label}</li>))}
+                    {this.state.menus.map( (menu,value) =>(<li key={value}>{menu.label}</li>))}
                     </ul>
                 </nav>
             </header>

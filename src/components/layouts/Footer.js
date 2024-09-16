@@ -1,38 +1,94 @@
 import React, { Component } from 'react';
-import './Footer.css'; // Custom CSS for footer styling
+import './Footer.css';
 
 class Footer extends Component {
+  footerData = [
+    {
+      title: "",
+      content: [
+        {
+          type: 'image',
+          src: 'https://www.achieversit.com/assets/images/logo-white.png', // Replace with your logo URL
+          alt: 'Company Logo',
+        },
+        {
+          type: 'text',
+          text: 'We provides a widegroup of oppotunities for freshers and Experienced candidate who can develop their skills and buid their carrer oppotunities across multiple companies.',
+        },
+      ],
+    },
+    {
+      title: 'COMPANY',
+      links: ['Home', 'Placements', 'Corporate Training', 'Contact Us'],
+    },
+    {
+      title: 'TRENDING COURSES',
+      links: ['UI Development COURSE', 'Angular JS course', 'React JS Course', 'Digital Marketing Course','Python Course'],
+    },
+    {
+      title: 'CONTACT INFO',
+      links: ['#63,1st floor,18th Main','8th cross BTM 1st stage,Bangalore','India-560029','India:+918431-040-457' ,'info@achiversit.com'],
+       
+    },
+    
+    {
+      title: 'SOCIAL MEDIA',
+      socialLinks: [
+        { name: 'Facebook', icon: 'fab fa-facebook', url: 'https://facebook.com' },
+        { name: 'Twitter', icon: 'fab fa-twitter', url: 'https://twitter.com' },
+        { name: 'Instagram', icon: 'fab fa-instagram', url: 'https://instagram.com' },
+        { name: 'LinkedIn', icon: 'fab fa-linkedin', url: 'https://linkedin.com'},
+      ],
+    },
+  ];
+
   render() {
     return (
       <footer className="footer">
-        <div className="footer-container">
-          <div className="footer-section">
-            <h4>Company</h4>
-            <ul>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#careers">Careers</a></li>
-              <li><a href="#contact">Contact Us</a></li>
-            </ul>
+        <div className="container">
+          <div className="footer-columns">
+            {this.footerData.map((section, index) => (
+              <div className="footer-column" key={index}>
+                <h4>{section.title}</h4>
+                <ul>
+                  {section.content? section.content.map((item, idx) => (
+                        <li key={idx}>
+                          {item.type === 'image' ? (
+                            <img
+                              src={item.src}
+                              alt={item.alt}
+                              className="footer-logo"
+                            />
+                          ) : (
+                            <p>{item.text}</p>
+                          )}
+                        </li>
+                      ))
+                    : section.links 
+                    ? section.links.map((link, idx) => (
+                        <li key={idx}>
+                          <a href={`/${link.toLowerCase().replace(' ', '-')}`}>
+                            {link}
+                          </a>
+                        </li>
+                      ))
+                    : section.socialLinks.map((social, idx) => (
+                        <li key={idx}>
+                          <a
+                            href={social.url}
+                            target="_blank"
+                          >
+                            <i className={social.icon}></i> {social.name}
+                          </a>
+                        </li>
+                      ))}
+                </ul>
+              </div>
+            ))}
           </div>
-          <div className="footer-section">
-            <h4>Courses</h4>
-            <ul>
-              <li><a href="#frontend">Front-End Development</a></li>
-              <li><a href="#backend">Back-End Development</a></li>
-              <li><a href="#fullstack">Full Stack Development</a></li>
-            </ul>
+          <div className="footer-bottom">
+            <p>© {new Date().getFullYear()} Your E-Commerce Platform. All rights reserved.</p>
           </div>
-          <div className="footer-section">
-            <h4>Follow Us</h4>
-            <ul className="social-links">
-              <li><a href="#facebook">Facebook</a></li>
-              <li><a href="#twitter">Twitter</a></li>
-              <li><a href="#linkedin">LinkedIn</a></li>
-            </ul>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} AchieversIT. All Rights Reserved.</p>
         </div>
       </footer>
     );
@@ -40,3 +96,6 @@ class Footer extends Component {
 }
 
 export default Footer;
+
+
+ 
