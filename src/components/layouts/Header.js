@@ -15,7 +15,6 @@ class Header extends Component{
             ]
         }
     }
-    
     render(){
         return(
             <header className="header">
