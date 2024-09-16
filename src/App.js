@@ -10,7 +10,6 @@ function App() {
        <Header />
        <Courses />
        <Footer />
-       
     </div>
   );
 }

@@ -1,4 +1,4 @@
-/* Header Styles */
+
 .header {
     background-color: #333;
     display: flex;
@@ -38,5 +38,4 @@
     display: flex;
     gap: 100px; 
   }
-  
   
